@@ -20,7 +20,7 @@ timestamps {
             descriptive_version = sh(returnStdout: true, script: 'git describe --long --tags --dirty --always').trim()
             echo descriptive_version
 
-            dockerWarBuilder = "war-${repo}-${env.BUILD_TAG}"
+            dockerWarBuilder = "war-${repo}"
             dockerPusher = "push-${env.BUILD_TAG}"
 
             try {
