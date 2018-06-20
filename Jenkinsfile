@@ -26,7 +26,7 @@ timestamps {
             try {
                 stage "Build WAR"
                 sh "mkdir -p target/"
-                sh """docker run --rm -v "$(pwd):/build" -w /build --name ${dockerWarBuilder} maven:slim mvn package"""
+                sh """docker run --rm -v "\$(pwd):/build" -w /build --name ${dockerWarBuilder} maven:slim mvn package"""
 
                 fingerprint 'target/cas.war'
 
