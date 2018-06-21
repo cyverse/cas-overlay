@@ -21,7 +21,7 @@ timestamps {
             echo descriptive_version
 
             dockerWarBuilder = "war-${repo}"
-            dockerPusher = "push-${env.BUILD_TAG}"
+            dockerPusher = "push-${repo}"
 
             try {
                 stage "Build WAR"
