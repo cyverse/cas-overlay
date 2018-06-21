@@ -36,9 +36,9 @@ timestamps {
                 dockerRepo = "${dockerUser}/${repo}:${env.BRANCH_NAME}"
                 lock("docker-push-${dockerRepo}") {
                     milestone 101
-                    sh """docker build --rm
-                          --build-arg git_commit=${git_commit}
-                          --build-arg descriptive_version=${descriptive_version}
+                    sh """docker build --rm \\
+                          --build-arg git_commit=${git_commit} \\
+                          --build-arg descriptive_version=${descriptive_version} \\
                           -t ${dockerRepo} ."""
 
                     image_sha = sh(
