@@ -81,7 +81,7 @@
         <dependency>
              <groupId>org.cyverse</groupId>
              <artifactId>cyverse-cas-server-support-ldap-rfc2307</artifactId>
-             <version>1.0.0</version>
+             <version>1.0.1</version>
         </dependency>
         <dependency>
             <groupId>org.apereo.cas</groupId>
