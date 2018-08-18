@@ -2,60 +2,14 @@
 <!-- Specify the refresh internal in seconds. -->
 <Configuration monitorInterval="5" packages="org.apereo.cas.logging">
     <Properties>
-        <!-- 
-        Default log directory is the current directory but that can be overridden with -Dcas.log.dir=<logdir>
-        Or you can change this property to a new default
-        -->
-        <Property name="cas.log.dir" >/var/log/tomcat8</Property>
-        <!-- To see more CAS specific logging, adjust this property to info or debug or run server with -Dcas.log.leve=debug -->
         <Property name="cas.log.level" >warn</Property>
     </Properties>
     <Appenders>
         <Console name="console" target="SYSTEM_OUT">
             <PatternLayout pattern="%d %p [%c] - &lt;%m&gt;%n"/>
         </Console>
-        <RollingFile name="file" fileName="${sys:cas.log.dir}/cas.log" append="true"
-                     filePattern="${sys:cas.log.dir}/cas-%d{yyyy-MM-dd-HH}-%i.log">
-            <PatternLayout pattern="%d %p [%c] - &lt;%m&gt;%n"/>
-            <Policies>
-                <OnStartupTriggeringPolicy />
-                <SizeBasedTriggeringPolicy size="10 MB"/>
-                <TimeBasedTriggeringPolicy />
-            </Policies>
-        </RollingFile>
-        <RollingFile name="auditlogfile" fileName="${sys:cas.log.dir}/cas_audit.log" append="true"
-                     filePattern="${sys:cas.log.dir}/cas_audit-%d{yyyy-MM-dd-HH}-%i.log">
-            <PatternLayout pattern="%d %p [%c] - %m%n"/>
-            <Policies>
-                <OnStartupTriggeringPolicy />
-                <SizeBasedTriggeringPolicy size="10 MB"/>
-                <TimeBasedTriggeringPolicy />
-            </Policies>
-        </RollingFile>
-
-        <RollingFile name="perfFileAppender" fileName="${sys:cas.log.dir}/perfStats.log" append="true"
-                     filePattern="${sys:cas.log.dir}/perfStats-%d{yyyy-MM-dd-HH}-%i.log">
-            <PatternLayout pattern="%m%n"/>
-            <Policies>
-                <OnStartupTriggeringPolicy />
-                <SizeBasedTriggeringPolicy size="10 MB"/>
-                <TimeBasedTriggeringPolicy />
-            </Policies>
-        </RollingFile>
-
-        <CasAppender name="casAudit">
-            <AppenderRef ref="auditlogfile" />
-        </CasAppender>
-        <CasAppender name="casFile">
-            <AppenderRef ref="file" />
-        </CasAppender>
-        <CasAppender name="casConsole">
-            <AppenderRef ref="console" />
-        </CasAppender>
-        <CasAppender name="casPerf">
-            <AppenderRef ref="perfFileAppender" />
-        </CasAppender>
     </Appenders>
+
     <Loggers>
         <!-- If adding a Logger with level set higher than warn, make category as selective as possible -->
         <!-- Loggers inherit appenders from Root Logger unless additivity is false -->
@@ -94,23 +48,11 @@
         <AsyncLogger name="com.hazelcast" level="warn" />
         <AsyncLogger name="org.jasig.spring" level="warn" />
 
-        <!-- Log perf stats only to perfStats.log -->
-        <AsyncLogger name="perfStatsLogger" level="info" additivity="false" includeLocation="true">
-            <AppenderRef ref="casPerf"/>
-        </AsyncLogger>
-
         <!-- Log audit to all root appenders, and also to audit log (additivity is not false) -->
-        <AsyncLogger name="org.apereo.inspektr.audit.support" level="info" includeLocation="true" >
-            <AppenderRef ref="casAudit"/>
-        </AsyncLogger>
+        <AsyncLogger name="org.apereo.inspektr.audit.support" level="info" includeLocation="true" />
 
         <!-- All Loggers inherit appenders specified here, unless additivity="false" on the Logger -->
         <AsyncRoot level="warn">
-            <AppenderRef ref="casFile"/>
-            <!-- 
-                 For deployment to an application server running as service, 
-                 delete the casConsole appender below
-            -->
             <AppenderRef ref="casConsole"/>
         </AsyncRoot>
     </Loggers>
