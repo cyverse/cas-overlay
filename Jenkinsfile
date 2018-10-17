@@ -20,8 +20,9 @@ timestamps {
             descriptive_version = sh(returnStdout: true, script: 'git describe --long --tags --dirty --always').trim()
             echo descriptive_version
 
-            dockerWarBuilder = "war-${repo}"
-            dockerPusher = "push-${repo}"
+            dockerWarBuilder = "war-${env.BUILD_TAG}"
+            dockerCleanup = "cleanup-${env.BUILD_TAG}"
+            dockerPusher = "push-${env.BUILD_TAG}"
 
             try {
                 stage "Build WAR"
@@ -62,6 +63,13 @@ timestamps {
                     }
                 }
             } finally {
+                try {
+                    sh "docker run --rm --name ${dockerCleanup} -v \$(pwd):/build -w /build alpine rm -r target"
+                } finally {
+                    sh returnStatus: true, script: "docker kill ${dockerCleanup}"
+                    sh returnStatus: true, script: "docker rm ${dockerCleanup}"
+                }
+
                 // using returnStatus so if these are gone it doesn't error
                 sh returnStatus: true, script: "docker kill ${dockerWarBuilder}"
                 sh returnStatus: true, script: "docker rm ${dockerWarBuilder}"
