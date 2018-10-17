@@ -20,9 +20,9 @@ timestamps {
             descriptive_version = sh(returnStdout: true, script: 'git describe --long --tags --dirty --always').trim()
             echo descriptive_version
 
-            dockerWarBuilder = "war-${env.BUILD_TAG}"
-            dockerCleanup = "cleanup-${env.BUILD_TAG}"
-            dockerPusher = "push-${env.BUILD_TAG}"
+            dockerWarBuilder = "war-${repo}-${env.BRANCH_NAME}-${env.BUILD_NUMBER}"
+            dockerCleanup = "cleanup-${repo}-${env.BRANCH_NAME}-${env.BUILD_NUMBER}"
+            dockerPusher = "push-${repo}-${env.BRANCH_NAME}-${env.BUILD_NUMBER}"
 
             try {
                 stage "Build WAR"
