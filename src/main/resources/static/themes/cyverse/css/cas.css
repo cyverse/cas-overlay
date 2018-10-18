@@ -67,8 +67,13 @@ header {
     top: 0px;
     left: 0px;
     padding-top: 2%;
-    background:url(../images/cyverse_auth_logo.png) no-repeat scroll 25px 10px;
     color: white;
+}
+
+#cyverseLogo_white {
+    background: url(../images/cyverse_auth_logo.png) no-repeat scroll;
+    background-size: contain;
+    height: 92px;
 }
 
 h2 {
