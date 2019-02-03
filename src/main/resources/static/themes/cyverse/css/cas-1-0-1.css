@@ -55,15 +55,31 @@ html {
 article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block; }
 
+@import url(https://fonts.googleapis.com/css?family=Lato:700,400,300,100);
+
+.huge {
+  font-size: 30pt;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+}
+
+.semi-huge {
+  font-size: 18pt;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+}
+
 body {
+  min-width:960px;
+  background: white;
+  background-image: radial-gradient(rgba(9, 113, 170, 1), rgba(20, 34, 72, 1));
+  color: #333;
+  font-family: Roboto, sans-serif;
+  font-size: 14px;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  font-size: 1rem;
   font-weight: 400;
-  line-height: 1.5;
   color: #212529;
-  text-align: left;
-  background-color: #343a40; }
+  text-align: left; }
 
 [tabindex="-1"]:focus {
   outline: 0 !important; }
@@ -80,6 +96,18 @@ h1, h2, h3, h4, h5, h6 {
 p {
   margin-top: 0;
   margin-bottom: 1rem; }
+
+header {
+  position: relative;
+  top: 0px;
+  left: 0px;
+  padding-top: 2%;
+  color: white; }
+
+#cyverseLogo_white {
+  background: url(../images/cyverse_auth_logo.png) no-repeat scroll;
+  background-size: contain;
+  height: 92px; }
 
 abbr[title],
 abbr[data-original-title] {
@@ -146,6 +174,12 @@ a {
   a:hover {
     color: #a0b757;
     text-decoration: underline; }
+
+a:link, a:visited {
+  color: #257bb2; }
+
+a.btn-success:link, a.btn-success:visited, a.btn-success:hover {
+  color: white; }
 
 a:not([href]):not([tabindex]) {
   color: inherit;
@@ -310,10 +344,17 @@ h1, .h1 {
   font-size: 2.5rem; }
 
 h2, .h2 {
-  font-size: 2rem; }
+  font-size: 2rem;
+  min-height: 45px;
+  width: 100%;
+  color: #fff;
+  font-family: roboto, 'lato', sans-serif;
+  padding-left: 20px;
+  font-weight: 300; }
 
 h3, .h3 {
-  font-size: 1.75rem; }
+  font-size: 1.75rem;
+  font-weight: normal; }
 
 h4, .h4 {
   font-size: 1.5rem; }
@@ -323,6 +364,39 @@ h5, .h5 {
 
 h6, .h6 {
   font-size: 1rem; }
+
+#logo {
+  display: block;
+  background: url(../images/apereo-logo.png) no-repeat;
+  text-indent: -999em;
+  float: left;
+  height: 100px;
+  width: 80%;
+  margin-right: 40px;
+  border: 0px;
+  color: white; }
+
+#content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 2px; }
+
+#loadingMessage {
+  font-size: 1.4rem; }
+
+#serviceui.serviceinfo {
+  border: 1px dotted #0066FF;
+  color: black;
+  padding-left: 10px;
+  padding-top: 5px; }
+
+#servicedesc {
+  vertical-align: middle;
+  padding-left: 30px;
+  width: 90%; }
+
+.modal {
+  display: none; }
 
 .lead {
   font-size: 1.25rem;
@@ -362,7 +436,8 @@ small,
 mark,
 .mark {
   padding: 0.2em;
-  background-color: #fcf8e3; }
+  background-color: #fcf8e3;
+  font-weight: bold; }
 
 .list-unstyled {
   padding-left: 0;
