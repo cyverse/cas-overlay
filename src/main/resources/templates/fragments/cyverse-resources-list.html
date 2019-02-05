@@ -1,26 +1,42 @@
-<div class="well well-lg hidden-xs">
-    <h3 th:text="#{cas.cyverse.resources.header}">:</h3>
-    <ul class="list-group">
-        <li class="list-group-item">
-            <a href="http://www.cyverse.org/" th:inline="text">
-                <i class="fa fa-file"></i> [[#{cas.cyverse.resources.web}]]
-            </a>
-        </li>
-        <li class="list-group-item">
-            <a href="http://status.cyverse.org/" th:inline="text">
-                <i class="fa fa-spinner"></i> [[#{cas.cyverse.resources.status}]]
-            </a>
-        </li>
-        <li class="list-group-item">
-            <a href="http://www.cyverse.org/learning-center/" th:inline="text">
-                <i class="fa fa-graduation-cap"></i> [[#{cas.cyverse.resources.learning-center}]]
-            </a>
-         </li>
-        <li class="list-group-item">
-            <a href="http://www.cyverse.org/about" th:inline="text">
-                <i class="fa fa-info-circle"></i> [[#{cas.cyverse.resources.about}]]
-            </a>
-        </li>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 
-    </ul>
-</div>
+    <title>CyVerse Resource List Fragment</title>
+    <link href="../../static/css/cas.css" rel="stylesheet" th:remove="tag" />
+</head>
+<body>
+<main role="main" class="container mt-3 mb-3">
+    <div th:fragment="cyverse-resource-list" id="cyverse-resource-list" class="card d-sm-none d-md-block">
+        <div class="card-body">
+            <h3 class="card-title" th:text="#{cas.cyverse.resources.header}">Links to CyVerse Resources</h3>
+            <ul class="list-group">
+                <li class="list-group-item">
+                <a href="http://www.cyverse.org/" th:inline="text">
+                    <i class="fa fa-file"></i> [[#{cas.cyverse.resources.web}]]
+                </a>
+                </li>
+                <li class="list-group-item">
+                    <a href="http://status.cyverse.org/" th:inline="text">
+                        <i class="fa fa-spinner"></i> [[#{cas.cyverse.resources.status}]]
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a href="http://www.cyverse.org/learning-center/" th:inline="text">
+                        <i class="fa fa-graduation-cap"></i> [[#{cas.cyverse.resources.learning-center}]]
+                    </a>
+                 </li>
+                <li class="list-group-item">
+                    <a href="http://www.cyverse.org/about" th:inline="text">
+                        <i class="fa fa-info-circle"></i> [[#{cas.cyverse.resources.about}]]
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</main>
+</body>
+</html>

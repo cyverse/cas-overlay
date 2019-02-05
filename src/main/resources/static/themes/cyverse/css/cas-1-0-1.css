@@ -377,7 +377,7 @@ h6, .h6 {
   color: white; }
 
 #content {
-  background: #fff;
+  background: transparent;
   padding: 20px;
   border-radius: 2px; }
 
