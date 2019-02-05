@@ -104,7 +104,7 @@ header {
   padding-top: 2%;
   color: white; }
 
-#cyverseLogo_white {
+.cyverseLogo_white {
   background: url(../images/cyverse_auth_logo.png) no-repeat scroll;
   background-size: contain;
   height: 92px; }
@@ -2985,7 +2985,8 @@ tbody.collapse.show {
   padding-bottom: 0.3125rem;
   margin-right: 1rem;
   font-size: 1.25rem;
-  line-height: inherit;
+  height: 92px;
+  width: 500px;
   white-space: nowrap; }
   .navbar-brand:hover, .navbar-brand:focus {
     text-decoration: none; }
@@ -3287,6 +3288,8 @@ tbody.collapse.show {
     border-top: 0; }
   .card-header h2 {
     color: black; }
+  .card-header .fa-circle {
+    color: #1490b3; }
 
 .card-footer {
   padding: 0.75rem 1.25rem;
@@ -7640,33 +7643,32 @@ footer {
  * Add in our own custom social colors.
  */
 .btn-submit {
-  background-color: #28a745;
+  background-color: #0971ab;
   color: #fff;
-  background-color: #28a745;
   border-color: rgba(0, 0, 0, 0.2); }
   .btn-submit:focus, .btn-submit.focus {
     color: #fff;
-    background-color: #1e7e34;
+    background-color: #6cc1ec;
     border-color: rgba(0, 0, 0, 0.2); }
   .btn-submit:hover {
     color: #fff;
-    background-color: #1e7e34;
+    background-color: #6cc1ec;
     border-color: rgba(0, 0, 0, 0.2); }
   .btn-submit:active, .btn-submit.active, .open > .btn-submit.dropdown-toggle {
     color: #fff;
-    background-color: #1e7e34;
+    background-color: #6cc1ec;
     border-color: rgba(0, 0, 0, 0.2); }
     .btn-submit:active:hover, .btn-submit:active:focus, .btn-submit:active.focus, .btn-submit.active:hover, .btn-submit.active:focus, .btn-submit.active.focus, .open > .btn-submit.dropdown-toggle:hover, .open > .btn-submit.dropdown-toggle:focus, .open > .btn-submit.dropdown-toggle.focus {
       color: #fff;
-      background-color: #176128;
+      background-color: #6cc1ec;
       border-color: rgba(0, 0, 0, 0.2); }
   .btn-submit:active, .btn-submit.active, .open > .btn-submit.dropdown-toggle {
     background-image: none; }
   .btn-submit.disabled:hover, .btn-submit.disabled:focus, .btn-submit.disabled.focus, .btn-submit[disabled]:hover, .btn-submit[disabled]:focus, .btn-submit[disabled].focus, fieldset[disabled] .btn-submit:hover, fieldset[disabled] .btn-submit:focus, fieldset[disabled] .btn-submit.focus {
-    background-color: #28a745;
+    background-color: #6cc1ec;
     border-color: rgba(0, 0, 0, 0.2); }
   .btn-submit .badge {
-    color: #28a745;
+    color: #6cc1ec;
     background-color: #fff; }
 
 .btn-cas {
@@ -7961,7 +7963,7 @@ a {
   display: block; }
 
 header > .navbar {
-  background-color: #f8f9fa;
+  background-color: transparent;
   color: #212529; }
   header > .navbar .logo path.cls-1 {
     fill: #153e50; }
