@@ -126,9 +126,20 @@
                     </form>
 
                     <div th:unless="${passwordManagementEnabled}">
-                        <span class="fa fa-question-circle"></span>
-                        <span th:utext="#{screen.pm.button.forgotpwd}">Forgot your password?</span>
-                        <p/>
+                        <ul class="login-form-links">
+                            <li>
+                                <span class="fa fa-question-circle"></span>
+                                <span th:utext="#{screen.pm.button.forgotpwd}">Forgot your password?</span>
+                            </li>
+                            <li>
+                                <span class="fa fa-circle"></span>
+                                <span th:utext="#{screen.pm.button.register}">Register</span>
+                            </li>
+                            <li>
+                                <span class="fa fa-circle"></span>
+                                <span th:utext="#{screen.pm.button.support}"></span>
+                            </li>
+                        </ul>
                     </div>
 
                     <script type="text/javascript" th:inline="javascript">

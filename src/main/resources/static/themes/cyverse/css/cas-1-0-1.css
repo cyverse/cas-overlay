@@ -60,14 +60,20 @@ article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, s
 .huge {
   font-size: 30pt;
   font-family: 'Roboto', sans-serif;
-  font-weight: 300;
-}
+  font-weight: 300; }
 
 .semi-huge {
   font-size: 18pt;
   font-family: 'Roboto', sans-serif;
-  font-weight: 300;
-}
+  font-weight: 300; }
+
+.login-form-links {
+  list-style: none;
+  margin-top: 1rem;
+  padding-left: 0rem; }
+
+.login-form-links > li {
+  margin-bottom: 5px; }
 
 body {
   min-width:960px;
