@@ -6,6 +6,7 @@ buildscript {
         maven { url "https://repo.spring.io/libs-milestone" }
         maven { url "https://repo.spring.io/libs-snapshot" }
         maven { url "https://plugins.gradle.org/m2/" }
+        maven { url "https://repo.clojars.org" }
     }
     dependencies {
         classpath "de.undercouch:gradle-download-task:${project.gradleDownloadTaskVersion}"
@@ -24,6 +25,7 @@ repositories {
     maven { url "https://repo.spring.io/milestone/" }
     maven { url "https://repo.spring.io/snapshot/" }
     maven { url "https://oss.jfrog.org/artifactory/oss-snapshot-local" }
+    maven { url "https://repo.clojars.org" }
 }
 
 def casServerVersion = project.'cas.version'
@@ -43,8 +45,10 @@ apply from: rootProject.file("gradle/springboot.gradle")
 apply from: rootProject.file("gradle/dockerjib.gradle")
 
 dependencies {
-    // Other CAS dependencies/modules may be listed here...
-    // compile "org.apereo.cas:cas-server-support-json-service-registry:${casServerVersion}"
+    compile "org.apereo.cas:cas-server-support-json-service-registry:${casServerVersion}"
+    compile "org.cyverse:cyverse-cas-server-support-ldap-rfc2307:${project.'cas.version'}"
+    compile "org.apereo.cas:cas-server-support-oauth-webflow:${project.'cas.version'}"
+    compile "org.apereo.cas:cas-server-support-oidc:${project.'cas.version'}"
 }
 
 tasks.findByName("jibDockerBuild")
@@ -54,7 +58,7 @@ tasks.findByName("jibDockerBuild")
 tasks.findByName("jib")
     .dependsOn(copyWebAppIntoJib, copyConfigIntoJib)
     .finalizedBy(deleteWebAppFromJib)
-    
+
 configurations.all {
     resolutionStrategy {
         cacheChangingModulesFor 0, "seconds"
