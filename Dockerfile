@@ -1,40 +1,15 @@
-FROM adoptopenjdk/openjdk11:alpine-slim AS overlay
+FROM adoptopenjdk/openjdk13:alpine
 
-RUN mkdir -p cas-overlay
-COPY ./src cas-overlay/src/
-COPY ./gradle/ cas-overlay/gradle/
-COPY ./gradlew ./settings.gradle ./build.gradle ./gradle.properties /cas-overlay/
+RUN apk add --no-cache ca-certificates java-cacerts rsync && \
+    mkdir -p /etc/cas/config /etc/cas/services /etc/cas-config/config /etc/cas-config/services
 
-RUN mkdir -p ~/.gradle \
-    && echo "org.gradle.daemon=false" >> ~/.gradle/gradle.properties \
-    && echo "org.gradle.configureondemand=true" >> ~/.gradle/gradle.properties \
-    && cd cas-overlay \
-    && chmod 750 ./gradlew \
-    && ./gradlew --version;
+LABEL org.cyverse.git-ref="$git_commit"
+LABEL org.cyverse.version="$version"
+LABEL org.cyverse.descriptive-version="$descriptive_version"
 
-RUN cd cas-overlay \
-    && ./gradlew clean build --parallel;
+COPY build/libs/cas.war /cas.war
+COPY run-cas.sh /bin
 
-FROM adoptopenjdk/openjdk11:alpine-jre AS cas
+EXPOSE 8443
 
-LABEL "Organization"="Apereo"
-LABEL "Description"="Apereo CAS"
-
-RUN cd / \
-    && mkdir -p /etc/cas/config \
-    && mkdir -p /etc/cas/services \
-    && mkdir -p /etc/cas/saml \
-    && mkdir -p cas-overlay;
-
-COPY etc/cas/ /etc/cas/
-COPY etc/cas/config/ /etc/cas/config/
-COPY etc/cas/services/ /etc/cas/services/
-COPY etc/cas/saml/ /etc/cas/saml/
-COPY --from=overlay cas-overlay/build/libs/cas.war cas-overlay/
-
-EXPOSE 8080 8443
-
-ENV PATH $PATH:$JAVA_HOME/bin:.
-
-WORKDIR cas-overlay
-ENTRYPOINT ["java", "-server", "-noverify", "-Xmx2048M", "-jar", "cas.war"]
+ENTRYPOINT ["run-cas.sh"]
