@@ -40,7 +40,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>2.6</version>
+                <version>3.3.2</version>
                 <configuration>
                     <warName>cas</warName>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
@@ -108,7 +108,7 @@
     </dependencies>
     <properties>
         <cas.standalone.config.file>/etc/cas/config/cas.properties</cas.standalone.config.file>
-        <cas.version>5.3.7</cas.version>
+        <cas.version>5.3.15</cas.version>
         <springboot.version>1.5.18.RELEASE</springboot.version>
         <!-- app.server could be -jetty, -undertow, -tomcat, or blank if you plan to provide appserver -->
         <app.server>-tomcat</app.server>
